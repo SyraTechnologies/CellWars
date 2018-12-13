@@ -1,6 +1,6 @@
-# Instant Game Communication Demo
+# Instant Game - Cell Wars
 
-This demo contains code that demonstrates the more important types of interactions that an Instant Game client can have with backend services: sending/receiving payloads to Game Bot and saving/retrieving data to a custom backend.
+This is an instant game container for cell wars.
 
 ## Pre-requisites
 
