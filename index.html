@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="full-screen" content="yes" />
+	<meta name="screen-orientation" content="portrait" />
+	<script src="/assets/js/polyfills.js"></script>
+	<script src="/assets/js/socket.io.js"></script>
+	<script src="/assets/js/phaser.min.js"></script>
+	<script src="/assets/js/cell.ai.js"></script>
+	<script src="/assets/js/cellite.scenes.js"></script>
+	<script src="/assets/js/cellite.multiplayer.js"></script>
+	<script src="/assets/js/cellite.singleplayer.js"></script>
+	<style>
+	html,body {
+		background:#000;
+		margin:0px;
+		padding:0px;
+		overflow:hidden;
+		width:auto !important;
+		height:auto !important;
+	}
+	.chatbox {
+		height:50vh;
+		width:25vw;
+		min-width:200px;
+		background:#fff;
+		position:absolute;
+		left:0;
+		bottom:0;
+	}
+	#phaser-example {
+		position:absolute;
+		top:15px;
+		left:calc(50vw - var(--width));
+		width:100px;
+	}
+	#phaser-example:after {
+		color:white;
+	}
+	.chatbox-content{
+	color:white;
+	}
+	.message-from {
+		display:inline-block;
+		color:white;
+	}
+	.message-content {
+		display:inline-block;
+		color:white;
+		word-break: break-all;
+	}
+	</style>
+	<script>
+		var socket = io();
+socket.on('disconnect', (reason) => {
+  if (reason === 'io server disconnect') {
+    // the disconnection was initiated by the server, you need to reconnect manually
+    socket.connect();
+  }
+  // else the socket will automatically try to reconnect
+});
+socket.on("message",function(m,from){
+	var cb = document.getElementById("chatbox-content");
+	cb.innerHTML = cb.innerHTML + "<div class='message'><div class='message-from'>"+ from +":</div>&nbsp;<div class='message-content'>" + m + "</div></div>";
+});
+socket.on("err",function(m){
+	alert(m);
+});
+socket.on("joined chatroom",function(user){
+	document.getElementById("chatbox-input").addEventListener('keyup',submitchat);
+	document.getElementById("chatbox-content").innerHTML = "<div class='message'><div class='message-from'>System:</div>&nbsp;<div class='message-content'>Hello," + user + ", welcome to Cellite Cell Wars</div></div>";
+});
+
+window.onresize = ()=>{
+	screenHeight = window.innerHeight - 10;
+	screenWidth = (900/1800) * (window.innerHeight-10);
+	document.getElementById("phaser-example").style.setProperty("--width",(screenWidth /2)  + "px");
+	
+	resizecanvas();        
+};
+var screenWidth = null;
+var screenHeight = null;
+var game = null;
+var sceneHeight = 1800;
+var sceneWidth = 900;
+var aidiff = 300;
+var config = {
+	type: Phaser.AUTO,
+	parent: 'phaser-example',
+	width: sceneWidth,
+	height: sceneHeight,
+	backgroundColor: '#000000',
+	physics: {
+		default: 'impact'
+	},
+	scene: [TitleScene,SoloScene,CTScene,BDScene,WinScene,MultiScene,MultiWinScene]
+};
+game = new Phaser.Game(config); 
+var winner = "";
+
+
+var currScene = "TitleScene";
+var scene = null;
+var teams = ["red","green","blue"];
+
+
+
+
+
+function resizecanvas(){
+	if(screenWidth && screenHeight && document.querySelector("canvas")){
+		document.querySelector("canvas").style.width = screenWidth + "px";
+		document.querySelector("canvas").style.height = screenHeight + "px"; 
+		document.querySelector("canvas").oncontextmenu = ()=> {return false;};
+	}else{
+		setTimeout(function(){ resizecanvas(); },1000);
+	}
+}
+var chatboxopened = true;
+function togglechatbox(){
+
+	if(chatboxopened){
+		chatboxopened = false;
+		document.getElementById("chattoggle").innerHTML = "Open Chat";
+		document.getElementById("chatbox").style.height = "0px";
+		document.getElementById("chatbox-content").style.display = "none";
+		document.getElementById("chatbox-input-container").style.display = "none";
+	}else{
+		chatboxopened = true;
+		document.getElementById("chattoggle").innerHTML = "Close Chat";
+		document.getElementById("chatbox").style.height = "50vh";
+		document.getElementById("chatbox-content").style.display = "block";
+		document.getElementById("chatbox-input-container").style.display = "block";
+	}
+}
+
+</script>
+	<script>
+function joinchatroom(username,room){
+	socket.emit("join chatroom",username,room);
+}  
+function submitchat(event){
+	var inputvalue = document.getElementById('chatbox-input').value;
+	var charKeyCode = event.keyCode || event.which;
+	var oldKeyCode = charKeyCode;
+	if (charKeyCode == 0 || charKeyCode == 229)
+		charKeyCode = inputvalue.charCodeAt(inputvalue.length-1);
+	
+	if (event.keyCode == 13 || charKeyCode == 10 || (charKeyCode == 99 && (oldKeyCode == 229 || oldKeyCode == 0))) {
+		event.preventDefault();
+		socket.emit('message',document.getElementById('chatbox-input').value);
+		this.value = "";
+	}
+}
+</script>
+</head>
+
+<body>
+	<br /><br /><button onclick="currScene = 'MultiScene'; scene.scene.start('MultiScene');">Multiplayer</button>
+	<br /><br /><button onclick="console.log(window.timeouts)">Frame</button>
+	<button onclick="socket.emit('send food','0','4');">Send Food</button>
+	<audio autoplay controls loop volume="0.1" style="display:none;">
+		<source src="/assets/noise.ogg" type="audio/ogg">
+		<source src="/assets/noise.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+
+	<center>
+		<div id="phaser-example" style="width:auto; height:100%;"></div>
+	</center>
+	<div class="chatbox" id="chatbox">
+		<center style="background:#ddd; color:#000;"><span id="chattoggle" onclick="togglechatbox()">Close Chat</span></center>
+		<div class="chatbox-content" id="chatbox-content" style="background:black; height:90%; width:100%; overflow-y:scroll; word-wrap: break-word;">
+			<center>
+				<h3 style="color:white;">Enter a display name</h3>
+				<input type="text" id="chatbox-username" name="chatbox-username" /><br /><br />
+				<button onclick="joinchatroom(document.getElementById('chatbox-username').value,'MainRoom')">Join Chatroom</button>
+				<br/>
+				<h2>How To Play</h2>
+				On mobile long tap your cell which you will use to attack. Then tap an enemy cell to send your virus
+				
+				On Desktop right click your cell which you will use to attack. Then left click an enemy cell to send your virus.
+				
+				You may also send RNA to yourself to provide some extra beef in your support line. You also can not make cross map shots very easily and often need to proxy through another cell.
+			</center>
+		</div>
+		<div style="height:10%;" id="chatbox-input-container"><textarea type="text" id="chatbox-input" style="height:100%; width:100%; font-size:2vh;"></textarea>
+			<div>
+			</div>
+</body>
+
+</html>
