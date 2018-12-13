@@ -7,13 +7,13 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="full-screen" content="yes" />
 	<meta name="screen-orientation" content="portrait" />
-	<script src="/assets/js/polyfills.js"></script>
-	<script src="/assets/js/socket.io.js"></script>
-	<script src="/assets/js/phaser.min.js"></script>
-	<script src="/assets/js/cell.ai.js"></script>
-	<script src="/assets/js/cellite.scenes.js"></script>
-	<script src="/assets/js/cellite.multiplayer.js"></script>
-	<script src="/assets/js/cellite.singleplayer.js"></script>
+	<script src="/js/polyfills.js"></script>
+	<script src="/js/socket.io.js"></script>
+	<script src="/js/phaser.min.js"></script>
+	<script src="/js/cell.ai.js"></script>
+	<script src="/js/cellite.scenes.js"></script>
+	<script src="/js/cellite.multiplayer.js"></script>
+	<script src="/js/cellite.singleplayer.js"></script>
 	<style>
 	html,body {
 		background:#000;
@@ -164,8 +164,8 @@ function submitchat(event){
 	<br /><br /><button onclick="console.log(window.timeouts)">Frame</button>
 	<button onclick="socket.emit('send food','0','4');">Send Food</button>
 	<audio autoplay controls loop volume="0.1" style="display:none;">
-		<source src="/assets/noise.ogg" type="audio/ogg">
-		<source src="/assets/noise.mp3" type="audio/mp3">
+		<source src="/noise.ogg" type="audio/ogg">
+		<source src="/noise.mp3" type="audio/mp3">
 		Your browser does not support the audio element.
 	</audio>
 

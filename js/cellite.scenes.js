@@ -22,15 +22,15 @@ var BDScene = new Phaser.Class({
 
     preload: function ()
     {
-		this.load.image('cell-gray-selected', '/assets/cell-gray-selected.png');
-		this.load.image('cell-green-selected', '/assets/cell-green-selected.png');
-		this.load.image('cell-blue-selected', '/assets/cell-blue-selected.png');
-		this.load.image('cell-red-selected', '/assets/cell-red-selected.png');
-		this.load.image('cell-green', '/assets/cell-green.png');
-		this.load.image('cell-blue', '/assets/cell-blue.png');
-		this.load.image('cell-red', '/assets/cell-red.png');
-		this.load.image('cell-gray', '/assets/cell-gray.png');
-		this.load.image('cell-food', '/assets/cell-food.png');  
+		this.load.image('cell-gray-selected', '/img/cell-gray-selected.png');
+		this.load.image('cell-green-selected', '/img/cell-green-selected.png');
+		this.load.image('cell-blue-selected', '/img/cell-blue-selected.png');
+		this.load.image('cell-red-selected', '/img/cell-red-selected.png');
+		this.load.image('cell-green', '/img/cell-green.png');
+		this.load.image('cell-blue', '/img/cell-blue.png');
+		this.load.image('cell-red', '/img/cell-red.png');
+		this.load.image('cell-gray', '/img/cell-gray.png');
+		this.load.image('cell-food', '/img/cell-food.png');  
     },
 
     create: function ()
@@ -64,15 +64,15 @@ var CTScene = new Phaser.Class({
 
     preload: function ()
     {
-		this.load.image('cell-gray-selected', '/assets/cell-gray-selected.png');
-		this.load.image('cell-green-selected', '/assets/cell-green-selected.png');
-		this.load.image('cell-blue-selected', '/assets/cell-blue-selected.png');
-		this.load.image('cell-red-selected', '/assets/cell-red-selected.png');
-		this.load.image('cell-green', '/assets/cell-green.png');
-		this.load.image('cell-blue', '/assets/cell-blue.png');
-		this.load.image('cell-red', '/assets/cell-red.png');
-		this.load.image('cell-gray', '/assets/cell-gray.png');
-		this.load.image('cell-food', '/assets/cell-food.png');  
+		this.load.image('cell-gray-selected', '/img/cell-gray-selected.png');
+		this.load.image('cell-green-selected', '/img/cell-green-selected.png');
+		this.load.image('cell-blue-selected', '/img/cell-blue-selected.png');
+		this.load.image('cell-red-selected', '/img/cell-red-selected.png');
+		this.load.image('cell-green', '/img/cell-green.png');
+		this.load.image('cell-blue', '/img/cell-blue.png');
+		this.load.image('cell-red', '/img/cell-red.png');
+		this.load.image('cell-gray', '/img/cell-gray.png');
+		this.load.image('cell-food', '/img/cell-food.png');  
     },
 
     create: function ()
@@ -154,15 +154,15 @@ var TitleScene = new Phaser.Class({
 		this.game.onPause = ()=>noop("pause");
 		this.focusLoss = ()=>noop("focusloss");
 		this.focusGain = ()=>noop("focusgain");
-		this.load.image('cell-gray-selected', '/assets/cell-gray-selected.png');
-		this.load.image('cell-green-selected', '/assets/cell-green-selected.png');
-		this.load.image('cell-blue-selected', '/assets/cell-blue-selected.png');
-		this.load.image('cell-red-selected', '/assets/cell-red-selected.png');
-		this.load.image('cell-green', '/assets/cell-green.png');
-		this.load.image('cell-blue', '/assets/cell-blue.png');
-		this.load.image('cell-red', '/assets/cell-red.png');
-		this.load.image('cell-gray', '/assets/cell-gray.png');
-		this.load.image('cell-food', '/assets/cell-food.png');  
+		this.load.image('cell-gray-selected', '/img/cell-gray-selected.png');
+		this.load.image('cell-green-selected', '/img/cell-green-selected.png');
+		this.load.image('cell-blue-selected', '/img/cell-blue-selected.png');
+		this.load.image('cell-red-selected', '/img/cell-red-selected.png');
+		this.load.image('cell-green', '/img/cell-green.png');
+		this.load.image('cell-blue', '/img/cell-blue.png');
+		this.load.image('cell-red', '/img/cell-red.png');
+		this.load.image('cell-gray', '/img/cell-gray.png');
+		this.load.image('cell-food', '/img/cell-food.png');  
     },
 
     create: function ()
@@ -207,16 +207,16 @@ var SoloScene = new Phaser.Class({
 		this.focusLoss = ()=>noop("focusloss");
 		this.focusGain = ()=>noop("focusgain");
 		//this.stage.disableVisibilityChange = true;
-		this.load.image('cell-gray-selected', '/assets/cell-gray-selected.png');
-		this.load.image('cell-green-selected', '/assets/cell-green-selected.png');
+		this.load.image('cell-gray-selected', '/img/cell-gray-selected.png');
+		this.load.image('cell-green-selected', '/img/cell-green-selected.png');
 
-		this.load.image('cell-blue-selected', '/assets/cell-blue-selected.png');
-		this.load.image('cell-red-selected', '/assets/cell-red-selected.png');
-		this.load.image('cell-green', '/assets/cell-green.png');
-		this.load.image('cell-blue', '/assets/cell-blue.png');
-		this.load.image('cell-red', '/assets/cell-red.png');
-		this.load.image('cell-gray', '/assets/cell-gray.png');
-		this.load.image('cell-food', '/assets/cell-food.png'); 
+		this.load.image('cell-blue-selected', '/img/cell-blue-selected.png');
+		this.load.image('cell-red-selected', '/img/cell-red-selected.png');
+		this.load.image('cell-green', '/img/cell-green.png');
+		this.load.image('cell-blue', '/img/cell-blue.png');
+		this.load.image('cell-red', '/img/cell-red.png');
+		this.load.image('cell-gray', '/img/cell-gray.png');
+		this.load.image('cell-food', '/img/cell-food.png'); 
     },
     create: function ()
     {
@@ -245,16 +245,16 @@ var MultiScene = new Phaser.Class({
 
     preload: function ()
     {
-		this.load.image('cell-gray-selected', '/assets/cell-gray-selected.png');
-		this.load.image('cell-green-selected', '/assets/cell-green-selected.png');
+		this.load.image('cell-gray-selected', '/img/cell-gray-selected.png');
+		this.load.image('cell-green-selected', '/img/cell-green-selected.png');
 
-		this.load.image('cell-blue-selected', '/assets/cell-blue-selected.png');
-		this.load.image('cell-red-selected', '/assets/cell-red-selected.png');
-		this.load.image('cell-green', '/assets/cell-green.png');
-		this.load.image('cell-blue', '/assets/cell-blue.png');
-		this.load.image('cell-red', '/assets/cell-red.png');
-		this.load.image('cell-gray', '/assets/cell-gray.png');
-		this.load.image('cell-food', '/assets/cell-food.png'); 
+		this.load.image('cell-blue-selected', '/img/cell-blue-selected.png');
+		this.load.image('cell-red-selected', '/img/cell-red-selected.png');
+		this.load.image('cell-green', '/img/cell-green.png');
+		this.load.image('cell-blue', '/img/cell-blue.png');
+		this.load.image('cell-red', '/img/cell-red.png');
+		this.load.image('cell-gray', '/img/cell-gray.png');
+		this.load.image('cell-food', '/img/cell-food.png'); 
     },
     create: function ()
     {
@@ -280,16 +280,16 @@ var MultiWinScene = new Phaser.Class({
 
     preload: function ()
     {
-		this.load.image('cell-gray-selected', '/assets/cell-gray-selected.png');
-		this.load.image('cell-green-selected', '/assets/cell-green-selected.png');
+		this.load.image('cell-gray-selected', '/img/cell-gray-selected.png');
+		this.load.image('cell-green-selected', '/img/cell-green-selected.png');
 
-		this.load.image('cell-blue-selected', '/assets/cell-blue-selected.png');
-		this.load.image('cell-red-selected', '/assets/cell-red-selected.png');
-		this.load.image('cell-green', '/assets/cell-green.png');
-		this.load.image('cell-blue', '/assets/cell-blue.png');
-		this.load.image('cell-red', '/assets/cell-red.png');
-		this.load.image('cell-gray', '/assets/cell-gray.png');
-		this.load.image('cell-food', '/assets/cell-food.png'); 
+		this.load.image('cell-blue-selected', '/img/cell-blue-selected.png');
+		this.load.image('cell-red-selected', '/img/cell-red-selected.png');
+		this.load.image('cell-green', '/img/cell-green.png');
+		this.load.image('cell-blue', '/img/cell-blue.png');
+		this.load.image('cell-red', '/img/cell-red.png');
+		this.load.image('cell-gray', '/img/cell-gray.png');
+		this.load.image('cell-food', '/img/cell-food.png'); 
     },
     create: function ()
     {
